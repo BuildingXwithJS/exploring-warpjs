@@ -2,7 +2,7 @@
 
 > Free open-source tutorial on creating a simple fronend and API using WarpJS
 
-This repository contains code and related materials for [Exploring WarpJS]() video.
+This repository contains code and related materials for [Exploring WarpJS](https://youtu.be/ZMrC381cvpw) video.
 
 ## Project description
 
