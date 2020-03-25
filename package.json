@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "@warpjs/engine": "^1.1.4",
-    "@warpjs/warp": "^2.0.1"
+    "@warpjs/warp": "^2.0.1",
+    "graphql-request": "^1.8.2"
   },
   "devDependencies": {
     "@warpjs/webpack-plugin": "^1.1.4",

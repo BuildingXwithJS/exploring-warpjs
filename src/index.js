@@ -1,24 +1,33 @@
-'use strict'
+"use strict";
 
 // import WarpJS
-import { defaultWarper as warp } from '@warpjs/warp'
-import engine from '@warpjs/engine'
+import engine from "@warpjs/engine";
+import { defaultWarper as warp } from "@warpjs/warp";
+import { getData } from "./api";
 
 // init WarpJS
-engine.init()
-
-// back-end warp function
-const hello = (name) => {
-  // warp directive
-  'warp +server -client'
-
-  return `Hello ${name} from Node.js ${process.version}`
-}
+engine.init();
 
 // on web page load
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener("DOMContentLoaded", async () => {
+  document.getElementById("result").innerHTML = "Loading..";
   // call back-end function
-  const response = await warp.call(hello, 'World')
+  const response = await warp.call(getData, "World");
+  console.log(response);
   // show result in browser
-  document.getElementById('result').innerHTML = response
-})
+  let resultHTML = "";
+
+  response.result.forEach(result => {
+    resultHTML += `
+    <div>
+      <h1>${result.name} from ${result.mostRecent.date}</h1>
+      <p>Confirmed: ${result.mostRecent.confirmed}</p>
+      <p>Deaths: ${result.mostRecent.deaths}</p>
+      <p>Recovered: ${result.mostRecent.recovered}</p>
+      <p>Growth Rate: ${result.mostRecent.growthRate}</p>
+    </div>
+    `;
+  });
+
+  document.getElementById("result").innerHTML = resultHTML;
+});
